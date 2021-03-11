@@ -1,0 +1,26 @@
+// Media Query
+$breakpoint-up: (
+  "medium": "76.8rem",
+  // 768px
+  "large": "102.4rem",
+  // 1024px
+);
+
+$breakpoint-down: (
+  "small": "42.5rem",
+  // 425px
+  "medium": "76.8rem",
+  //768px
+);
+
+@mixin breakpoint-up($size) {
+  @media (min-width: map-get($breakpoint-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media (max-width: map-get($breakpoint-down, $size)) {
+    @content;
+  }
+}
