@@ -30,12 +30,18 @@ li {
 a,
 a:visited,
 a:hover {
+  color: white;
   text-decoration: none;
 }
 
 .container {
   max-width: 111.1rem;
+  height: 100%;
   margin: 0 auto;
+}
+
+.pos-rel {
+  position: relative;
 }
 
 @media (max-width: 48.1em) {
@@ -68,7 +74,7 @@ a:hover {
     background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.4))), url("/images/desktop/image-hero.jpg");
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/desktop/image-hero.jpg");
     background-size: cover;
-    height: 68vh;
+    height: 65rem;
   }
 }
 
@@ -106,7 +112,45 @@ a:hover {
   padding-right: 3.1rem;
 }
 
-.header__links li a {
+.header__title {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  right: 7%;
+  border: 2px solid white;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+@media (min-width: 64em) {
+  .header__title {
+    top: 60%;
+    left: 2%;
+    right: 40%;
+  }
+}
+
+.header__text {
+  padding: 2.8rem 2.4rem 2.4rem;
+}
+
+.header__text span {
+  display: block;
+  font-family: "Josefin Sans";
+  font-weight: 300;
+  font-size: 4rem;
+  text-transform: uppercase;
+  line-height: 1.1;
   color: white;
+}
+
+@media (min-width: 64em) {
+  .header__text span {
+    display: inline-block;
+    padding-right: 1.5rem;
+    font-size: 7.2rem;
+    line-height: 1.1;
+    word-spacing: 5rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */

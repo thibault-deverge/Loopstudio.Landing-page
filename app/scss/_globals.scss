@@ -30,6 +30,7 @@ li {
 a,
 a:visited,
 a:hover {
+  color: $white;
   text-decoration: none;
 }
 
@@ -37,7 +38,14 @@ a:hover {
 // Spacing
 .container {
   max-width: 111.1rem;
+  height: 100%;
   margin: 0 auto;
+}
+
+///////////////
+// Position
+.pos-rel {
+  position: relative;
 }
 
 ////////////////
