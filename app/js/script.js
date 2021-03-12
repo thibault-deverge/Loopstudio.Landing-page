@@ -1,7 +1,38 @@
-const btnHamburger = document.getElementById("btnHamburger");
-const headerMenu = document.querySelector(".header__menu");
-const overlay = document.querySelector("overlay");
-const fadeElems = document.querySelectorAll(".had-fade");
+const btnHamburger = document.querySelector(".btnHamburger");
+const header = document.querySelector(".header");
+const headerMenu = document.querySelector(".header__title");
+const toggleMenu = document.querySelector(".header__menu");
 
 ///////////////////////
-// Helper function Open and Close menu
+// Helper function
+const addFadeOut = function (elem) {
+  elem.classList.remove("fade-in");
+  elem.classList.add("fade-out");
+};
+
+const addFadeIn = function (elem) {
+  elem.classList.remove("fade-out");
+  elem.classList.add("fade-in");
+};
+
+const openMenu = function () {
+  header.classList.add("open");
+  addFadeOut(headerMenu);
+  addFadeIn(toggleMenu);
+};
+
+const closeMenu = function () {
+  header.classList.remove("open");
+  addFadeOut(toggleMenu);
+  addFadeIn(headerMenu);
+};
+
+///////////////////////
+// Event Listener
+btnHamburger.addEventListener("click", function () {
+  if (!header.classList.contains("open")) {
+    openMenu();
+  } else {
+    closeMenu();
+  }
+});

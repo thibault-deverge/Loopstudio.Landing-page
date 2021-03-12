@@ -1,3 +1,61 @@
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+    z-index: -1;
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+  }
+  to {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    z-index: -1;
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+  }
+  to {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+.fade-in {
+  -webkit-animation: fade-in 0.8s ease-in-out forwards;
+          animation: fade-in 0.8s ease-in-out forwards;
+}
+
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+  to {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+  to {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.fade-out {
+  -webkit-animation: fade-out 0.4s ease-in-out forwards;
+          animation: fade-out 0.4s ease-in-out forwards;
+}
+
 html {
   font-size: 62.5%;
   -webkit-box-sizing: border-box;
@@ -56,16 +114,11 @@ a:hover {
   }
 }
 
-.had-fade {
-  visibility: hidden;
-}
-
 .header {
   height: 100vh;
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.4))), url("/images/mobile/image-hero.jpg");
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/mobile/image-hero.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center center;
 }
 
@@ -73,7 +126,6 @@ a:hover {
   .header {
     background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.4)), to(rgba(0, 0, 0, 0.4))), url("/images/desktop/image-hero.jpg");
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/desktop/image-hero.jpg");
-    background-size: cover;
     height: 65rem;
   }
 }
@@ -91,11 +143,20 @@ a:hover {
   padding: 4rem 2.4rem;
 }
 
+.header__toggle {
+  z-index: 2;
+  cursor: pointer;
+}
+
 .header__toggle span {
   display: block;
   width: 2.4rem;
   height: 2px;
   background-color: white;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform-origin: 2px 1px;
+          transform-origin: 2px 1px;
 }
 
 .header__toggle span:not(:last-child) {
@@ -106,10 +167,38 @@ a:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 2;
 }
 
 .header__links li:not(:last-child) {
   padding-right: 3.1rem;
+}
+
+.header__links li a {
+  position: relative;
+}
+
+.header__links li a::after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  top: 3rem;
+  left: 50%;
+  width: 2.5rem;
+  height: 2px;
+  background-color: white;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.header__links li a:hover {
+  padding-bottom: 5px;
+}
+
+.header__links li a:hover::after {
+  opacity: 1;
 }
 
 .header__title {
@@ -149,8 +238,72 @@ a:hover {
     display: inline-block;
     padding-right: 1.5rem;
     font-size: 7.2rem;
-    line-height: 1.1;
-    word-spacing: 5rem;
   }
+}
+
+.header.open .overlay {
+  opacity: 1;
+}
+
+.header.open .header__toggle > span:first-child {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.header.open .header__toggle > span:nth-child(2) {
+  opacity: 0;
+}
+
+.header.open .header__toggle > span:last-child {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.header__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: -1rem;
+  opacity: 0;
+}
+
+.header__menu--hamburgerLinks li {
+  padding-top: 2.4rem;
+}
+
+.header__menu--hamburgerLinks li a {
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  -webkit-transition: all 0.2 ease-in-out;
+  transition: all 0.2 ease-in-out;
+}
+
+.header__menu--hamburgerLinks li a:hover {
+  border-bottom: 1px solid white;
+}
+
+.overlay {
+  position: fixed;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 /*# sourceMappingURL=style.css.map */
