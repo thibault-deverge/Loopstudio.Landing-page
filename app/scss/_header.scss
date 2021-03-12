@@ -1,7 +1,7 @@
 .header {
   height: 100vh;
   background-image: url("/images/mobile/image-hero.jpg");
-  background-size: cover
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 
@@ -12,14 +12,24 @@
   }
 
   &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 2.4rem;
   }
 
   &__logo {
-    
   }
 
   &__toggle {
     span {
+      display: block;
+      width: 2.4rem;
+      height: 2px;
+      background-color: $white;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
     }
   }
 

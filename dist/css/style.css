@@ -54,4 +54,25 @@ body {
     height: 68vh;
   }
 }
+
+.header__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 4rem 2.4rem;
+}
+
+.header__toggle span {
+  display: block;
+  width: 2.4rem;
+  height: 2px;
+  background-color: white;
+}
+
+.header__toggle span:not(:last-child) {
+  margin-bottom: 5px;
+}
 /*# sourceMappingURL=style.css.map */
