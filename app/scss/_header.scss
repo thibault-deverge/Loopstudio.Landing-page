@@ -1,38 +1,90 @@
 .header {
   height: 100vh;
-  background-image: url("/images/mobile/image-hero.jpg");
-  background-size: cover
+  background-image: linear-gradient(
+      to right,
+      rgba($black, 0.4),
+      rgba($black, 0.4)
+    ),
+    url("/images/mobile/image-hero.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 
   @include breakpoint-up(large) {
-    background-image: url("/images/desktop/image-hero.jpg");
+    background-image: linear-gradient(
+        to right,
+        rgba($black, 0.4),
+        rgba($black, 0.4)
+      ),
+      url("/images/desktop/image-hero.jpg");
     background-size: cover;
-    height: 68vh;
+    height: 65rem;
   }
 
   &__nav {
-  }
-
-  &__logo {
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2.4rem;
   }
 
   &__toggle {
     span {
+      display: block;
+      width: 2.4rem;
+      height: 2px;
+      background-color: $white;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
     }
   }
 
   &__links {
-    li {
-    }
+    display: flex;
 
-    li a {
+    li {
+      &:not(:last-child) {
+        padding-right: 3.1rem;
+      }
     }
   }
 
   &__title {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    right: 7%;
+    border: 2px solid $white;
+    transform: translateY(-50%);
+
+    @include breakpoint-up(large) {
+      top: 60%;
+      left: 2%;
+      right: 40%;
+    }
+  }
+
+  &__text {
+    padding: 2.8rem 2.4rem 2.4rem;
+
     span {
+      display: block;
+      font-family: "Josefin Sans";
+      font-weight: 300;
+      font-size: 4rem;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: $white;
+
+      @include breakpoint-up(large) {
+        display: inline-block;
+        padding-right: 1.5rem;
+        font-size: 7.2rem;
+        line-height: 1.1;
+        word-spacing: 5rem;
+      }
     }
   }
 
